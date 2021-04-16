@@ -47,7 +47,14 @@ dependencies {
 
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
+
+    // Tests
     testImplementation("io.micronaut:micronaut-http-client")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:3.1.0")
+    testImplementation("org.mockito:mockito-inline:3.8.0")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.7.0")
+    testImplementation('org.hamcrest:hamcrest:2.2')
+
 }
 
 

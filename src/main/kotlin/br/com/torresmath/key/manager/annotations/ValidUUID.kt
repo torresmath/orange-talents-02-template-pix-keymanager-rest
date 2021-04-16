@@ -10,7 +10,7 @@ import kotlin.reflect.KClass
 
 @MustBeDocumented
 @Retention(AnnotationRetention.RUNTIME)
-@Target(AnnotationTarget.FIELD)
+@Target(AnnotationTarget.FIELD, AnnotationTarget.VALUE_PARAMETER)
 @Constraint(validatedBy = [ValidUUIDValidator::class])
 annotation class ValidUUID(
     val message: String = "Value must be a valid UUID",
@@ -19,9 +19,9 @@ annotation class ValidUUID(
 )
 
 @Singleton
-class ValidUUIDValidator : ConstraintValidator<ValidUUID, String> {
-    override fun isValid(value: String?, context: ConstraintValidatorContext?): Boolean {
-        return kotlin.runCatching { UUID.fromString(value) }.isSuccess
+class ValidUUIDValidator : ConstraintValidator<ValidUUID, Any> {
+    override fun isValid(value: Any?, context: ConstraintValidatorContext?): Boolean {
+        return kotlin.runCatching { UUID.fromString(value.toString()) }.isSuccess
     }
 
 }

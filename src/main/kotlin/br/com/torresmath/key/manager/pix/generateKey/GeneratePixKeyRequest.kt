@@ -4,6 +4,7 @@ import br.com.torresmath.key.manager.KeyRequest
 import br.com.torresmath.key.manager.annotations.ValidKeyIdentifier
 import br.com.torresmath.key.manager.annotations.ValidUUID
 import io.micronaut.core.annotation.Introspected
+import java.util.*
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotNull
 import javax.validation.constraints.Size
@@ -11,14 +12,14 @@ import javax.validation.constraints.Size
 @Introspected
 @ValidKeyIdentifier
 data class GeneratePixKeyRequest(
-    @ValidUUID @NotBlank val clientId: String,
+//    @ValidUUID @NotBlank val clientId: String,
     @NotBlank @Size(max = 77) val keyIdentifier: String,
     @NotNull val keyType: KeyTypeRequest,
     @NotNull val accountType: AccountTypeRequest
 ) {
-    fun toGrpcRequest(): KeyRequest {
+    fun toGrpcRequest(clientId: UUID): KeyRequest {
         return KeyRequest.newBuilder()
-            .setClientId(clientId)
+            .setClientId(clientId.toString())
             .setKeyIdentifier(keyIdentifier)
             .setKeyType(keyType.grpcValue)
             .setAccountType(accountType.grpcValue)

@@ -1,0 +1,10 @@
+micronaut:
+  applicattion:
+    name: key-manager-rest-test
+  server:
+    port: 8081
+  http:
+    services:
+      local-test:
+        urls:
+          - http://localhost:8081
