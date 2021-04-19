@@ -5,6 +5,8 @@ import br.com.torresmath.key.manager.pix.generateKey.GeneratePixKeyRequest
 import br.com.torresmath.key.manager.pix.generateKey.KeyTypeRequest
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertFalse
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
@@ -49,6 +51,10 @@ internal class ValidKeyIdentifierValidatorTest(@Inject val validator: ValidKeyId
         )
     }
 
+    @Test
+    fun `should return false with null value`() {
+        assertFalse(validator.isValid(null, null))
+    }
 
     @ParameterizedTest
     @MethodSource("mobileParams")

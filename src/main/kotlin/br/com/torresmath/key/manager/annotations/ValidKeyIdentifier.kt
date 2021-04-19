@@ -26,8 +26,6 @@ annotation class ValidKeyIdentifier(
 @Singleton
 class ValidKeyIdentifierValidator : ConstraintValidator<ValidKeyIdentifier, GeneratePixKeyRequest> {
 
-    @Inject
-    lateinit var validator: Validator
 
     override fun isValid(value: GeneratePixKeyRequest?, context: ConstraintValidatorContext?): Boolean {
         if (value == null)
