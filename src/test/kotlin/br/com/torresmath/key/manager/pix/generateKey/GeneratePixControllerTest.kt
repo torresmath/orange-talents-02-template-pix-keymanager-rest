@@ -36,7 +36,7 @@ internal class GeneratePixControllerTest {
         val keyIdentifier = "42549789873"
 
         val body =
-            GeneratePixKeyRequest(keyIdentifier, KeyTypeRequest.CPF, AccountTypeRequest.CHECKING_ACCOUNT)
+            GeneratePixKeyRequest(keyIdentifier, br.com.torresmath.key.manager.pix.model.KeyType.CPF, br.com.torresmath.key.manager.pix.model.AccountType.CHECKING_ACCOUNT)
 
         val grpcRequest = KeyRequest.newBuilder()
             .setClientId(clientId)

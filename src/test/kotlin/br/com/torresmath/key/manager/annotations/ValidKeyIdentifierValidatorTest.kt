@@ -1,8 +1,8 @@
 package br.com.torresmath.key.manager.annotations
 
-import br.com.torresmath.key.manager.pix.generateKey.AccountTypeRequest
 import br.com.torresmath.key.manager.pix.generateKey.GeneratePixKeyRequest
-import br.com.torresmath.key.manager.pix.generateKey.KeyTypeRequest
+import br.com.torresmath.key.manager.pix.model.AccountType
+import br.com.torresmath.key.manager.pix.model.KeyType
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertFalse
@@ -60,7 +60,7 @@ internal class ValidKeyIdentifierValidatorTest(@Inject val validator: ValidKeyId
     @MethodSource("mobileParams")
     fun `test validator MOBILE_NUMBER`(keyIdentifier: String, expected: Boolean) {
 
-        val request = GeneratePixKeyRequest(keyIdentifier, KeyTypeRequest.MOBILE_NUMBER, AccountTypeRequest.CHECKING_ACCOUNT)
+        val request = GeneratePixKeyRequest(keyIdentifier, KeyType.MOBILE_NUMBER, AccountType.CHECKING_ACCOUNT)
 
         assertEquals(expected, validator.isValid(request, null))
 
@@ -70,7 +70,7 @@ internal class ValidKeyIdentifierValidatorTest(@Inject val validator: ValidKeyId
     @MethodSource("cpfParams")
     fun `test validator CPF`(keyIdentifier: String, expected: Boolean) {
 
-        val request = GeneratePixKeyRequest(keyIdentifier, KeyTypeRequest.CPF, AccountTypeRequest.CHECKING_ACCOUNT)
+        val request = GeneratePixKeyRequest(keyIdentifier, KeyType.CPF, AccountType.CHECKING_ACCOUNT)
 
         assertEquals(expected, validator.isValid(request, null))
 
@@ -80,7 +80,7 @@ internal class ValidKeyIdentifierValidatorTest(@Inject val validator: ValidKeyId
     @MethodSource("emailParams")
     fun `test validator EMAIL`(keyIdentifier: String, expected: Boolean) {
 
-        val request = GeneratePixKeyRequest(keyIdentifier, KeyTypeRequest.EMAIL, AccountTypeRequest.CHECKING_ACCOUNT)
+        val request = GeneratePixKeyRequest(keyIdentifier, KeyType.EMAIL, AccountType.CHECKING_ACCOUNT)
 
         assertEquals(expected, validator.isValid(request, null))
 
@@ -90,7 +90,7 @@ internal class ValidKeyIdentifierValidatorTest(@Inject val validator: ValidKeyId
     @MethodSource("randomParams")
     fun `test validator RANDOM`(keyIdentifier: String, expected: Boolean) {
 
-        val request = GeneratePixKeyRequest(keyIdentifier, KeyTypeRequest.RANDOM, AccountTypeRequest.CHECKING_ACCOUNT)
+        val request = GeneratePixKeyRequest(keyIdentifier, KeyType.RANDOM, AccountType.CHECKING_ACCOUNT)
 
         assertEquals(expected, validator.isValid(request, null))
 
