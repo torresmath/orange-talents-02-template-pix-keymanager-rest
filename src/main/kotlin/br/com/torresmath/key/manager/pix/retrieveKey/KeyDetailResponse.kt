@@ -2,6 +2,8 @@ package br.com.torresmath.key.manager.pix.retrieveKey
 
 import br.com.torresmath.key.manager.pix.model.AccountType
 import br.com.torresmath.key.manager.pix.model.KeyType
+import br.com.torresmath.key.manager.shared.toLocalDateTime
+import java.time.LocalDateTime
 
 
 data class KeyDetailResponse(
@@ -10,29 +12,31 @@ data class KeyDetailResponse(
     val key: String,
     val keyType: KeyType,
     val owner: KeyOwnerResponse,
-    val account: KeyAccountResponse
+    val account: KeyAccountResponse,
+    val createdAt: LocalDateTime
 ) {
     companion object {
-        fun fromProto(protoKeyDetail: br.com.torresmath.key.manager.KeyDetailResponse): KeyDetailResponse {
+        fun fromGrpc(grpcKeyDetail: br.com.torresmath.key.manager.KeyDetailResponse): KeyDetailResponse {
 
-            val protoOwner = protoKeyDetail.owner
-            val protoAccount = protoKeyDetail.account
+            val protoOwner = grpcKeyDetail.owner
+            val protoAccount = grpcKeyDetail.account
             val protoInst = protoAccount.institution
 
             val institutionResponse = KeyAccountInstitutionResponse(protoInst.name, protoInst.isbn)
 
             return KeyDetailResponse(
-                clientId = protoKeyDetail.clientId,
-                pixId = protoKeyDetail.pixId,
-                key = protoKeyDetail.key,
-                keyType = KeyType.valueOf(protoKeyDetail.keyType),
+                clientId = grpcKeyDetail.clientId,
+                pixId = grpcKeyDetail.pixId,
+                key = grpcKeyDetail.key,
+                keyType = KeyType.valueOf(grpcKeyDetail.keyType),
                 owner = KeyOwnerResponse(protoOwner.name, protoOwner.cpf),
                 account = KeyAccountResponse(
                     protoAccount.number,
                     protoAccount.branch,
                     AccountType.getByProtoValue(protoAccount.type),
                     institutionResponse
-                )
+                ),
+                createdAt = grpcKeyDetail.createdAt.toLocalDateTime()
             )
         }
     }

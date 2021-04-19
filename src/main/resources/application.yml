@@ -6,6 +6,10 @@ micronaut:
 
 api.version: v1
 
+jackson:
+  date-format: yyyy-MM-dd HH:mm:ss
+  serializationInclusion: ALWAYS
+
 grpc:
   client:
     plaintext: true

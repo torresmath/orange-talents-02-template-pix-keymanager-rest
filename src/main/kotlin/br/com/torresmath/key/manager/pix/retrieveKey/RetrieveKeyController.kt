@@ -31,7 +31,7 @@ class RetrieveKeyController(@Inject private val retrieveKeyStub: RetrieveKeyGrpc
 
         val grpcKey = retrieveKeyStub.retrieveKey(retrieveKeyRequest)
 
-        return HttpResponse.ok(KeyDetailResponse.fromProto(grpcKey))
+        return HttpResponse.ok(KeyDetailResponse.fromGrpc(grpcKey))
     }
 
 }
