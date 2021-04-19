@@ -8,3 +8,5 @@ micronaut:
       local-test:
         urls:
           - http://localhost:8081
+
+api.version: v1

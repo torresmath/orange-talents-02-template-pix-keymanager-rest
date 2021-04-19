@@ -2,10 +2,8 @@ package br.com.torresmath.key.manager.annotations
 
 import br.com.torresmath.key.manager.pix.generateKey.GeneratePixKeyRequest
 import br.com.torresmath.key.manager.pix.generateKey.KeyTypeRequest
-import io.micronaut.validation.validator.Validator
 import io.micronaut.validation.validator.constraints.EmailValidator
 import org.hibernate.validator.internal.constraintvalidators.hv.br.CPFValidator
-import javax.inject.Inject
 import javax.inject.Singleton
 import javax.validation.Constraint
 import javax.validation.ConstraintValidator

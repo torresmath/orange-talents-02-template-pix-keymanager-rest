@@ -11,11 +11,10 @@ import org.slf4j.LoggerFactory
 import java.util.*
 import javax.inject.Inject
 import javax.validation.Valid
-import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotNull
 
 @Validated
-@Controller("/api/v1/clients/{clientId}")
+@Controller("/api/\${api.version}/clients/{clientId}")
 class GeneratePixController(
     @Inject private val generatePixStub: GenerateKeyGrpcServiceGrpc.GenerateKeyGrpcServiceBlockingStub
 ) {

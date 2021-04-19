@@ -2,7 +2,6 @@ package br.com.torresmath.key.manager.pix.generateKey
 
 import br.com.torresmath.key.manager.KeyRequest
 import br.com.torresmath.key.manager.annotations.ValidKeyIdentifier
-import br.com.torresmath.key.manager.annotations.ValidUUID
 import io.micronaut.core.annotation.Introspected
 import java.util.*
 import javax.validation.constraints.NotBlank
