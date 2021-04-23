@@ -5,13 +5,14 @@ import br.com.torresmath.key.manager.pix.model.AccountType
 import br.com.torresmath.key.manager.pix.model.KeyType
 import br.com.torresmath.key.manager.shared.toLocalDateTime
 import java.time.LocalDateTime
+import br.com.torresmath.key.manager.ListKeyResponse as GrpcListKeyResponse
 
 data class ListKeyResponse(
     val clientId: String,
     val keys: List<KeyItemResponse>
 ) {
     companion object {
-        fun fromGrpc(grpcKeyList: br.com.torresmath.key.manager.ListKeyResponse): ListKeyResponse {
+        fun fromGrpc(grpcKeyList: GrpcListKeyResponse): ListKeyResponse {
 
             val keys = grpcKeyList.keysList.map {
                 KeyItemResponse(

@@ -4,6 +4,7 @@ import br.com.torresmath.key.manager.pix.model.AccountType
 import br.com.torresmath.key.manager.pix.model.KeyType
 import br.com.torresmath.key.manager.shared.toLocalDateTime
 import java.time.LocalDateTime
+import br.com.torresmath.key.manager.KeyDetailResponse as GrpcKeyDetailResponse
 
 
 data class KeyDetailResponse(
@@ -16,7 +17,7 @@ data class KeyDetailResponse(
     val createdAt: LocalDateTime
 ) {
     companion object {
-        fun fromGrpc(grpcKeyDetail: br.com.torresmath.key.manager.KeyDetailResponse): KeyDetailResponse {
+        fun fromGrpc(grpcKeyDetail: GrpcKeyDetailResponse): KeyDetailResponse {
 
             val protoOwner = grpcKeyDetail.owner
             val protoAccount = grpcKeyDetail.account

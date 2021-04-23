@@ -1,14 +1,16 @@
 package br.com.torresmath.key.manager.pix.model
 
-enum class AccountType(val grpcValue: br.com.torresmath.key.manager.AccountType) {
-    CHECKING_ACCOUNT(br.com.torresmath.key.manager.AccountType.CHECKING_ACCOUNT),
-    SAVINGS_ACCOUNT(br.com.torresmath.key.manager.AccountType.SAVINGS_ACCOUNT);
+import br.com.torresmath.key.manager.AccountType as GrpcAccountType
+
+enum class AccountType(val grpcValue: GrpcAccountType) {
+    CHECKING_ACCOUNT(GrpcAccountType.CHECKING_ACCOUNT),
+    SAVINGS_ACCOUNT(GrpcAccountType.SAVINGS_ACCOUNT);
 
     companion object {
-        fun getByProtoValue(protoValue: br.com.torresmath.key.manager.AccountType) : AccountType {
+        fun getByProtoValue(protoValue: GrpcAccountType) : AccountType {
             return when(protoValue) {
-                br.com.torresmath.key.manager.AccountType.CHECKING_ACCOUNT -> CHECKING_ACCOUNT
-                br.com.torresmath.key.manager.AccountType.SAVINGS_ACCOUNT -> SAVINGS_ACCOUNT
+                GrpcAccountType.CHECKING_ACCOUNT -> CHECKING_ACCOUNT
+                GrpcAccountType.SAVINGS_ACCOUNT -> SAVINGS_ACCOUNT
                 else -> throw IllegalArgumentException("Couldn't translate Proto value: ${protoValue.name} to Account Type")
             }
         }

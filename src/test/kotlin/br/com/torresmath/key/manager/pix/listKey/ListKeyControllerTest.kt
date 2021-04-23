@@ -1,6 +1,9 @@
 package br.com.torresmath.key.manager.pix.listKey
 
-import br.com.torresmath.key.manager.*
+import br.com.torresmath.key.manager.AccountType
+import br.com.torresmath.key.manager.KeyStatus
+import br.com.torresmath.key.manager.KeyType
+import br.com.torresmath.key.manager.ListKeyGrpcServiceGrpc
 import br.com.torresmath.key.manager.pix.KeyManagerGrpcFactory
 import io.micronaut.context.annotation.Factory
 import io.micronaut.context.annotation.Replaces
@@ -18,6 +21,8 @@ import org.mockito.kotlin.given
 import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
+import br.com.torresmath.key.manager.ListKeyRequest as GrpcListKeyRequest
+import br.com.torresmath.key.manager.ListKeyResponse as GrpcListKeyResponse
 
 @MicronautTest
 internal class ListKeyControllerTest {
@@ -38,11 +43,11 @@ internal class ListKeyControllerTest {
 
         val url = "/api/${version}/clients/$clientId/pix"
 
-        val grpcRequest = ListKeyRequest.newBuilder()
+        val grpcRequest = GrpcListKeyRequest.newBuilder()
             .setClientId(clientId)
             .build()
 
-        val grpcResponse = br.com.torresmath.key.manager.ListKeyResponse.newBuilder()
+        val grpcResponse = GrpcListKeyResponse.newBuilder()
             .setClientId(clientId)
             .clearKeys()
             .build()
@@ -64,7 +69,7 @@ internal class ListKeyControllerTest {
 
         val url = "/api/${version}/clients/$clientId/pix"
 
-        val grpcRequest = ListKeyRequest.newBuilder()
+        val grpcRequest = GrpcListKeyRequest.newBuilder()
             .setClientId(clientId)
             .build()
 
